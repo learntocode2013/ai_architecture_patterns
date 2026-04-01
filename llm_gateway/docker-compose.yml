@@ -9,9 +9,9 @@ services:
     volumes:
       - ./config.yaml:/app/config.yaml
     environment:
-      - OPENAI_API_KEY=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
-      - GEMINI_API_KEY=AIzaSyBK9hF0SbioZPYdA_6SWuFqTnRXJ_moq6Y
-      - GOOGLE_API_KEY=AIzaSyBK9hF0SbioZPYdA_6SWuFqTnRXJ_moq6Y
+      - OPENAI_API_KEY=REDACTED
+      - GEMINI_API_KEY=REDACTED
+      - GOOGLE_API_KEY=REDACTED
       - GEMINI_API_VERSION=v1beta
       - LITELLM_CACHE=true
       - LITELLM_CACHE_TYPE=redis-semantic
