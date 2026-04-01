@@ -1,0 +1,32 @@
+model_list:
+  # Primary Model with Mocking for Testing
+  - model_name: enterprise-chat
+    litellm_params:
+      model: openai/gpt-3.5-turbo
+      api_key: "sk-fake-key"
+      mock_response: "Mocked response: Event sourcing is a design pattern where state changes are stored as a sequence of events."
+
+  # Fallback Model
+  - model_name: backup-chat
+    litellm_params:
+      model: gemini/gemini-3-flash-preview
+      api_key: "sk-fake-key"
+      mock_response: "Mocked backup response from gemini-3-flash-preview."
+
+router_settings:
+  fallbacks:
+    - enterprise-chat: ["backup-chat"]
+
+litellm_settings:
+  set_verbose: True
+  cache: True
+  cache_type: redis-semantic
+  embedding_model: google/text-embedding-004
+  redis_host: "redis-stack"
+  redis_port: 6379
+  redis_password: "dummy-password"
+  cache_params:
+    semantic_cache_threshold: 0.8
+
+general_settings:
+  master_key: "sk-local-practice-key"
